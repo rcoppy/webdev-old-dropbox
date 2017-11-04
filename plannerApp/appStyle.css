@@ -1,0 +1,57 @@
+/* Text styling borrowed from Choate's student portal page. */ 
+
+p, h1, h4 {
+    color: #2079c4;
+    /*font-family: aller, 'Lucida Sans Unicode', 'Lucida Grande', sans-serif; - doesnt look good*/
+    font-style: normal;
+    font-variant: normal;
+    font-stretch: normal;
+}
+
+body { 
+    background-color: #D3D3D3; /*#FEFDFD; - match colors with dropdown*/
+}
+
+/* Menu styling */ 
+
+#toolbar {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1; 
+    height: 100%; 
+    width: 144px; 
+}
+
+#settings-button { 
+    width: 100%; /* fill the menu */
+    text-align: center; 
+    color: #2079c4;
+}
+
+#settings-flyout { 
+
+    background-color: #D3D3D3; 
+    
+    /*http://www.w3schools.com/css/css3_borders.asp*/
+    border: none;
+    border-radius: 3px;
+}
+
+/* http://www.bootply.com/98385# 
+
+Makes dropdown selections not take up the entire width of the page.
+
+*/ 
+.modalSelectWidth {
+	width: auto;
+  	margin: 10px;
+    display: inline; 
+}
+
+#label-notes { 
+    margin: 10px; 
+
+    font-size: 1em; 
+    font-style: italic; 
+}

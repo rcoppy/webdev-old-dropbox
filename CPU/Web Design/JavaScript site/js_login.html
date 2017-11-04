@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head> 
+	<title>Log in</title>
+</head>
+
+<body>
+
+<!-- make a new password -->
+<form>
+	Create new password: <input name="newpwd" type="password" maxlength="512" id="newpwd">
+</form>
+
+<button type="button" onclick="setPassword();">Set password</button> <!-- buttons: take type, onclick attributes at the minimum (onclick should be a js function) -->
+
+<p id="setConfirm"></p> <!-- will display text confirming password has been changed -->
+
+<!-- login; the password here will be compared to the previously set password -->
+<form>
+
+	Username: <input name="user" type="text" maxlength="512" id="user"> <!-- class="searchField"/> -->
+
+	<!-- input tag: basic attributes - type, name, value, src -->
+	<br> <!-- line break --> 
+
+	Password: <input name="password" type="password" maxlength="512" id="pwd">
+
+</form>
+
+<button type="button" onclick="logIn();">Log in</button>
+
+<p id="output"></p> <!-- empty until we try to log in -->
+
+<!-- put javascript at the bottom of the page to make page loading faster - all the visuals will be processed first --> 
+<script>
+   var real_password = "1234"; // default value in case new password form is never submitted
+
+   function setPassword() {
+      real_password = document.getElementById('newpwd').value;
+      document.getElementById('setConfirm').innerHTML = "Password set to '"+real_password+"'.";
+   }
+
+   var username = "default"; // the mistake we were making before was settng username to Id.value here, instead of inside of the logIn function - the value never updated. 
+   var password = "default";
+
+    function logIn() { 
+
+        var username = document.getElementById("user").value;
+   		var password = document.getElementById("pwd").value;
+
+        var a = document.getElementById("output");
+        
+        if (password == real_password) {
+         	// success! We log in. 
+         	a.innerHTML = "Excelsior! You've been logged in, " + username + ".";
+         	a.style.color = "green";
+
+         	// redirect to the actual login page
+         	window.location = "login_success.html";
+        }
+        else {
+        	// failure
+        	a.innerHTML = "INTRUDER ALERT!!! Password incorrect. given password: "+password+"   real password: "+real_password;
+        	a.style.color = "#FF0000"; // equivalent to 'red'
+
+        }    
+    }
+
+</script>
+
+</body>
+</html>

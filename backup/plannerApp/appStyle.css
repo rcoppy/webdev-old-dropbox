@@ -1,0 +1,20 @@
+.locationDropdown {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1; 
+}
+
+/* Styling borrowed from Choate's student portal page. */ 
+
+p, h1, h4 {
+    color: #2079c4;
+    font-family: aller, 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-stretch: normal;
+}
+
+body { 
+    background-color: #FEFDFD;
+}

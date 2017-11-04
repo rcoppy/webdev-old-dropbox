@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Quadratic Formula Calculator</title>
+</head>
+
+<body>
+
+<h1>Quadratic Formula Calculator</h1>
+
+<p>Example: <span style="font-style: italic;">x^2 + x - 4 = 0</span><br>a = 1, b = 1, c = -4;</p>
+
+<form>
+
+	<span style="font-style: italic;">a: </span> <input name="a" type="number" maxlength="64" id="a"> 
+
+	<!-- input tag: basic attributes - type, name, value, src -->
+	<br> <!-- line break --> 
+
+	<span style="font-style: italic;">b: </span> <input name="b" type="number" maxlength="64" id="b"> 
+
+    <br>
+
+    <span style="font-style: italic;">c: </span> <input name="c" type="number" maxlength="64" id="c"> 
+
+    <br>
+</form>
+
+<p></p> <!-- line break --> 
+
+<button type="button" onclick="quadratic();">Solve</button> <!-- buttons: take type, onclick attributes at the minimum (onclick should be a js function) -->
+
+<p id="result"></p> <!-- will display solution to quadratic equation -->
+
+
+<script> 
+	var a = 1; // defaults
+	var b = 1; 
+	var c = 0; 
+    var x1,x2; // don't know the solutions for x yet 
+
+    function quadratic() { 
+    	// update values
+    	a = document.getElementById('a').value; 
+    	b = document.getElementById('b').value;
+    	c = document.getElementById('c').value; 
+
+    	var output = "No solution"; // default output text
+
+    	var discriminant = b*b - 4*a*c; 
+
+    	if (discriminant < 0) { // no solutions 
+    		// do nothing
+    	}
+    	else if (discriminant == 0) { // 1 solution
+    		x1 = (-b + Math.sqrt(discriminant)) / (2*a);
+    		output = x1; 
+    	}  
+    	else { // 2 solutions; disc > 0 
+    		x1 = (-b + Math.sqrt(discriminant)) / (2*a);
+    		x2 = (-b - Math.sqrt(discriminant)) / (2*a);
+
+    		output = x1+", "+x2; 
+    	} 
+
+    	document.getElementById('result').innerHTML = output; 
+    }
+
+</script>
+
+</body>
+</html>

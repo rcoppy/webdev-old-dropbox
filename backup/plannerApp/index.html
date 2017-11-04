@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Planner</title>
+    <meta charset="utf-8">
+
+    <!--mobile-first design-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="appStyle.css">
+
+     <!-- Google Maps API styling -->
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- Google Maps API -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqPxLrxJ1xTBp7WqFjldjEGGjqVSI76Jo"></script>
+    
+    
+    
+</head>
+
+<body>
+    
+    <!-- load coordinate data, set up Google Maps -->
+    <script type="text/javascript" src="pageInit.js"></script>
+    
+    <script type="text/javascript">
+        
+        //initialize(); 
+        
+        /*$(document).on('pageshow', '#wrapper', function(e, data){       
+            initialize();
+        });*/
+        
+        // from http://stackoverflow.com/questions/15872705/google-map-is-not-loading-for-the-first-time
+        // complications with not initializing coordinates list, map directly on pageload - domlistener won't fire, so we need to call initialize this way.  
+    </script>
+    
+    <!-- in bootstrap, 2 css container classes: .container, .container-fluid; containers can't be nested.-->
+    <div class="container" style="height: 100%">
+
+        <!-- map -->
+        <div id="map-container" style="height: 80%;">
+            <div id="map-canvas">
+            <!-- here's the map -->
+
+            </div>
+        </div>
+
+        <!-- event information -->
+        <div id="headerInfo"> 
+            <h1 id="label-event">Biology</h1>
+            <h4 id="label-location">Science Center</h4>
+            <p><strong id="label-time">8:55 AM</strong></p>
+        </div>
+
+        <!-- locations dropdown menu -->
+        <!-- http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_comp_dropdown-menu&stacked=h -->
+        <div id="coords-dropdown" class="locationDropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Locations
+            <span class="caret"></span></button>
+            <ul id="coords-dropdown-menu" class="dropdown-menu" role="menu" aria-labelledby="menu1"> 
+              <!--<li role="presentation" class="divider"></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li> -->
+            </ul>
+            
+            <!-- logo from the Choate website --> 
+            <img src="logo.png" alt="logo" style="float: right; padding-left: 21px; padding-top: 10px;"/>
+        </div>
+
+    </div>
+
+        
+</body>    
+</html>
+

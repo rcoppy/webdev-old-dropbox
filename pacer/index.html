@@ -1,0 +1,78 @@
+<html> 
+
+<head> 
+	<title>Ultimate Pacing Timer</title>
+	<style type="text/css">
+		.displayTimeCount { 
+		    -moz-transition: all 1s ease-in;
+		    -o-transition: all 1s ease-in;
+		    -webkit-transition: all 1s ease-in;
+		    transition: all 1s ease-in;
+		    background-color: #3FA2E3; 
+		    padding: 20px;
+		}
+
+		.active { 
+		    background-color: #AAFFEC; 
+		}
+
+		.slowTransition { 
+			-moz-transition-duration: 6582;
+			-o-transition-duration: 6582;
+			-webkit-transition-duration: 6582;
+			transition-duration: 6582;
+		}
+
+		p, h1, h2 { 
+			font-family: "Source Sans Pro", sans-serif; 
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+
+<body class="displayTimeCount"> 
+
+	<h1>Ultimate Pacing Timer</h1> 
+
+	<h2 id="labelMode">You'll hear a chime once a minute.</h2>
+
+	<p class="timerText">0 chimes</p>
+
+	<script> 
+
+		console.log("hello"); 
+
+		var audioChime = new Audio('chimes2.ogg');
+		var chimesCount = 0;
+
+		var intervalEvents = function () { 
+			console.log("interval fired");
+
+			audioChime.play();
+			chimesCount++; 
+			
+			$('.timerText').text(chimesCount + " chimes");  
+
+			$('.displayTimeCount').css('transition-duration','1s');
+			$('.displayTimeCount').toggleClass('active');
+			
+			// after duration is updated, queue it to be set back 
+			var durationTimeout = window.setTimeout(function () {
+				$('.displayTimeCount').css('transition-duration','6.582s');
+
+				$('.displayTimeCount').toggleClass('active');	
+			}, 1000);
+
+			var t = window.setTimeout(function () { 
+				//$('.displayTimeCount').toggleClass('active'); 
+				console.log("callback fired");
+			}, 7582);
+		}
+ 
+		var interval = window.setInterval(intervalEvents, 60000);
+
+	</script>
+
+</body> 
+
+</html> 

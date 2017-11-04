@@ -1,0 +1,131 @@
+
+
+<!--
++ - divide multiply 
+
+(new/old) +/- (new/old) * (newError/new + oldError/old)
+
+(new+old) +/- (newError + oldError)
+
+// absolute error calculator 
+// chain operations? 
+-->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Absolute Error Calculator</title>
+</head>
+
+<body>
+	<form id="myForm">
+	  	Absolute error calculator 
+	  	<br>
+	  	<br>
+		<input type="radio" name="operation" value="add" checked> <strong>+</strong><br>
+		<input type="radio" name="operation" value="subtract"> <strong>-</strong><br>
+		<input type="radio" name="operation" value="multiply"> <strong>*</strong><br>
+		<input type="radio" name="operation" value="divide"> <strong>/</strong>
+
+		<br>
+	  	<br>
+		<input type="text" name="value1" value="0.00">
+		<strong>+/-</strong>
+		<input type="text" name="value1Error" value="0.00">
+		<br>
+		<input type="text" name="value2" value="0.00">
+		<strong>+/-</strong>
+		<input type="text" name="value2Error" value="0.00">
+		
+		<br>
+		<br>
+		<input type="button" value="Submit" onclick="execute()">
+
+	</form> 
+
+	<h3 id="output"></h3>
+
+	<h4><em>By Alex, 2017</em></h4>
+
+	<script>
+
+	function execute() { 
+		var opType;  
+
+		var radios = document.getElementsByName('operation');
+
+		for (var i = 0, length = radios.length; i < length; i++) {
+		    if (radios[i].checked) {
+		        // do whatever you want with the checked radio
+		        opType = radios[i].value;
+
+		        // only one radio can be logically checked, don't check the rest
+		        break;
+		    }
+		}
+
+		var val1 = parseFloat(document.getElementsByName('value1')[0].value);
+		var e1 = parseFloat(document.getElementsByName('value1Error')[0].value);
+		var val2 = parseFloat(document.getElementsByName('value2')[0].value);
+		var e2 = parseFloat(document.getElementsByName('value2Error')[0].value);
+
+		var result; 
+
+		switch (opType) {
+			case 'add': 
+				result = addSub(val1, e1, val2, e2, false); 
+				break;
+			case 'subtract': 
+				result = addSub(val1, e1, val2, e2, true); 
+				break;
+			case 'multiply': 
+				result = multDiv(val1, e1, val2, e2, false); 
+				break;
+			case 'divide': 
+				result = multDiv(val1, e1, val2, e2, true); 
+				break;
+		}
+
+		console.log(val1+', '+e1+', '+val2+', '+e2+', '+result+', '+opType); 
+		document.getElementById('output').innerHTML = result.result.toString() + " +/- " + result.error.toString(); 
+
+	}
+
+	function multDiv(val1, e1, val2, e2, isDiv) {
+		var result; 
+		var error; 
+
+		if (isDiv) {
+			result = val1/val2; 
+		}
+		else {
+			result = val1*val2; 
+		}
+
+		error = result * (e1/val1 + e2/val2); 
+
+		return {result: result, error: error}; 
+	}
+
+	function addSub(val1, e1, val2, e2, isSub) {
+		var result; 
+		var error; 
+
+		if (isSub) {
+			result = val1-val2; 
+		}
+		else {
+			result = val1+val2; 
+		}
+
+		error = e1 + e2; 
+
+		return {result: result, error: error}; 
+	}
+
+	</script>
+</body>
+
+</html>
